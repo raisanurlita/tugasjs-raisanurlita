@@ -28,18 +28,18 @@
         <h3 style="margin-top: 50px;">Edit Data Customer</h3>
     </center>
     <div class="container">
-        <form id="form_tambah" action="proses_edit.php?id=<?php echo $id ?>" method="post">
+        <form action="proses_edit.php?id=<?php echo $id ?>" method="post">
             <div class="form-group mb-3">
                 <div class="form-label">Id</div>
                 <input type="text" name="id" data-name="id" class="required form-control" disabled value="<?php echo $id ?>">
             </div>
             <div class="form-group mb-3">
                 <div class="form-label">First Name</div>
-                <input type="text" name="first_name" data-name="F" class="required form-control" value="<?php echo $first_name ?>">
+                <input type="text" name="first_name" data-name="First Name" class="required form-control" value="<?php echo $first_name ?>">
             </div>
             <div class="form-group mb-3">
                 <div class="form-label">Last Name</div>
-                <input type="text" name="last_name" data-name="Nama Belakang" class="required form-control" value="<?php echo $last_name ?>">
+                <input type="text" name="last_name" data-name="Last Name" class="required form-control" value="<?php echo $last_name ?>">
             </div>
             <div class="form-group mb-3">
                 <div class="form-label">Email</div>
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group mb-3">
                 <div class="form-label">Phone</div>
-                <input type="text" name="phone" data-name="HP" class="required form-control" value="<?php echo $phone ?>">
+                <input type="text" name="phone" data-name="Phone" class="required form-control" value="<?php echo $phone ?>">
             </div>
             <div class="form-group mb-3">
                 <div class="form-label">Address</div>
@@ -56,39 +56,6 @@
             <div>
                 <input type="submit" name="Submit" value="Simpan" class="btn btn-primary btn-sm" style="width: 90px;" onclick="return confirm('Simpan Perubahan?')">
             </div>
-            <script>
-                $(document).ready(function() {
-                    $('#form_tambah').submit(function(e) {
-                        e.preventDefault(); // Mencegah pengiriman form
-
-                        // Menghapus pesan error yang mungkin ada
-                        $('.error').remove();
-
-                        // Cek setiap input dengan class "required"
-                        $('.required').each(function() {
-                            if ($(this).val() === '') {
-                                // Mendapatkan nama kolom dari atribut data-name
-                                var columnName = $(this).data('name');
-
-                                // Jika input kosong, tambahkan pesan error dan beri warna merah di kolomnya
-                                $(this).after('<div class=" form-text error text-danger" style="font-size: 12px;">' + columnName + ' tidak boleh kosong</div>');
-                                $(this).css('border-color', 'red');
-                            }
-                        });
-
-                        // Jika tidak ada input yang kosong, submit form
-                        if ($('.error').length === 0) {
-                            $(this).unbind('submit').submit();
-                        }
-                    });
-
-                    // Menghapus pesan error dan warna merah saat input diubah
-                    $('.required').keyup(function() {
-                        $(this).next('.error').remove();
-                        $(this).css('border-color', '');
-                    });
-                });
-            </script>
             </tbody>
             </table>
         </form>
